@@ -22,7 +22,12 @@ https://www.64ouncegames.com/pages/shifting-stones
           0 to 1 or 1 to 0 in a single operation.
 2. Card: Houses coordinate dictionaries mapping the grid coordinates to certain colors to form a pattern and also stores the point value if the card is scored.
          The card is displayed as a pattern in the 3x3 2D matrix in the console along with its cardID and the points value.
+3. Player: It tracks basic scalar variables like name, score, cards_scored_count, and a boolean flag (has_skipped_last_turn) to enforce turn rules. It also holds            a hand list containing active Card objects.
+4. ShiftingStones: This is the master controller class that coordinates the entire application, manages the rules, and orchestrates the other objects. It holds                      the overall game state, including a nested 2D list matrix representing the 3x3 grid of Stone objects, a deck list of Card objects, a                              discard_pile list, and an active player index tracking pointer. It contains background logic methods like _create_structured_deck(), which                        runs loops to dynamically generate randomized card configurations while using conditional filters (_is_valid_pattern) to ensure no illegal                        cards are created.It provides system methods like verify_pattern_match(), swap_stones(), and check_endgame_condition() that cross-reference                       player coordinates against the 2D grid layout to approve moves and update scores.
 
-The system entities—Stone, Card, and Player—act as autonomous, encapsulated classes responsible for maintaining their own local state attributes; for instance, each Stone object tracks its visible face value using an index modifier to mutate state via a discrete flip() method, while each Card object maps static geometric coordinates to target colors using dictionary key-value pairs. Orchestrating these components is the ShiftingStones structural manager, which acts as the primary controller.
+## NOTE
+1. This is strictly a 4 player variant of the original game.
+2. The card patterns in the randomly generated deck are very specific and involve the whole grid which is a slight deviation from the original card game, since      there do exist card patter which are row/column flexible. eg. This engine only validates a row of say R G W in the 1st row alone, but the orignal card game       may validate the same combination of colors in any row.
+3. The row,column input given by the user must be 0 indexed and NOT 1 indexed.
 
 
