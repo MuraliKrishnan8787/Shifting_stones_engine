@@ -12,16 +12,16 @@ https://www.64ouncegames.com/pages/shifting-stones
 1. The 4 players and the 3x3 grid tile pattern is intialised with a randomised pattern while adhering to the tile count contraints set by the rules of the game.
 2. A validated tiered deck is created and for the first round 4 cards each is dealt to the players.
 3. After every move of a player the cards in their hand and the current state of the grid is displayed.
-4. Each turn allows the user to input one of the few different "moves" like swap, flip, score etc. while expeding a card that is pushed to the discard pile list and
-   the hand is refilled upto 4 cards from the deck and the turn is ended.
+4. Each turn allows the user to input one of the few different "moves" like swap, flip, score etc. while expeding a card that is pushed to the discard pile list     and the hand is refilled upto 4 cards from the deck and the turn is ended.
 5. While scoring the pattern on the card ID the user inputs is compared to the grid state and validated and then the points are awarded if any.
-6. The game action loop goes on until the "endgame trigger" i.e, until a player reaches 8 cards scored (tracked at every turn for each player), once the endgame is
-   triggered,  the loop goes for one last turn to other players then terminates and at last displays the final scores of each player along with the winner.
+6. The game action loop goes on until the "endgame trigger" i.e, until a player reaches 8 cards scored (tracked at every turn for each player), once the endgame     is triggered,  the loop goes for one last turn to other players then terminates and at last displays the final scores of each player along with the winner.
 
 ## Architecture and Structural Flow
 ### Objects (eg. Card, Stone, Player etc)
-1. Stone: Encapsulates a dual-sided state tracker using a $1 - x$ index modifier map to toggle between underlying string representations seamlessly when a player commits to a flip command.
-2. Card: Houses coordinate dictionaries mapping absolute grid offsets `(r, c)` to expected target colors, combined with automated string text wrapping for clean console matrix rendering.
+1. Stone: Encapsulates a dual-sided state tracker by assigning each side 1 or 0 as index. It uses a 1-x modifier to "flip" the stone i.e change the state from
+          0 to 1 or 1 to 0 in a single operation.
+2. Card: Houses coordinate dictionaries mapping the grid coordinates to certain colors to form a pattern and also stores the point value if the card is scored.
+         The card is displayed as a pattern in the 3x3 2D matrix in the console along with its cardID and the points value.
 
 The system entities—Stone, Card, and Player—act as autonomous, encapsulated classes responsible for maintaining their own local state attributes; for instance, each Stone object tracks its visible face value using an index modifier to mutate state via a discrete flip() method, while each Card object maps static geometric coordinates to target colors using dictionary key-value pairs. Orchestrating these components is the ShiftingStones structural manager, which acts as the primary controller.
 
