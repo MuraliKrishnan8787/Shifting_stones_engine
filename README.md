@@ -27,7 +27,7 @@ https://www.64ouncegames.com/pages/shifting-stones
 
 ## NOTE
 1. This is strictly a 4 player variant of the original game.
-2. The card patterns in the randomly generated deck are very specific and involve the whole grid which is a slight deviation from the original card game, since      there do exist card patter which are row/column flexible. eg. This engine only validates a row of say R G W in the 1st row alone, but the orignal card game       may validate the same combination of colors in any row.
+2. The card patterns in the randomly generated deck are very specific and involve the whole grid which is a slight deviation from the original card game, since      there do exist card patterns which are row/column flexible. eg. This engine only validates a row of say R G W in the 1st row alone, but the orignal card game       may validate the same combination of colors in any row.
 3. The row,column input given by the user must be 0 indexed and NOT 1 indexed.
 
 
